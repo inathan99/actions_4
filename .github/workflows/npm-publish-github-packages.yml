@@ -1,0 +1,19 @@
+# Challenge 1
+ name: Lint test deploy on push
+ on: [push]
+ jobs:
+   test:
+     runs-on: ubuntu-latest
+     steps:
+       - name: Lint
+         run: | 
+           eslint --ext .jsx --fix src
+           echo 'lint done'
+       - name: Test
+         run: |
+          vitest run
+          echo 'test done'
+       - name: Build
+         run: |
+          vite build
+          echo 'build done'
