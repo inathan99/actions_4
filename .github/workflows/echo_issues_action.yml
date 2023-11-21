@@ -1,11 +1,11 @@
 name: Echo issues
-on: push
+on: issues
 jobs:
    test:
      runs-on: ubuntu-latest
      steps:
-      - name: Dump GitHub context
+      - name: event details
         env:
-          GITHUB_CONTEXT: ${{ toJSON(github) }}
+          GITHUB_CONTEXT: ${{ toJSON(github.event) }}
         run: echo "$GITHUB_CONTEXT"
          
